@@ -1,0 +1,36 @@
+{
+  "name": "Java 17 with Copilot",
+  // Alpine 이미지가 아닌 Debian 기반의 범용 이미지로 변경합니다.
+  "image": "mcr.microsoft.com/devcontainers/base:debian",
+
+  "features": {
+    // 이제 Debian 이미지 위에서 Java 기능이 정상적으로 설치됩니다.
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "17",
+      "installMaven": "true",
+      "installGradle": "false"
+    }
+  },
+
+  // VS Code에서 사용할 추천 익스텐션
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "vscjava.vscode-maven",
+        "vscjava.vscode-gradle",
+        "redhat.java",
+        "GitHub.copilot"
+      ]
+    }
+  },
+
+  // 포트 포워딩 (예: Spring Boot 애플리케이션의 기본 포트)
+  "forwardPorts": [8080],
+
+  // 컨테이너 생성 후 실행할 명령어
+  "postCreateCommand": "java -version",
+
+  // 컨테이너에 연결할 때 사용할 유저
+  "remoteUser": "vscode"
+}
